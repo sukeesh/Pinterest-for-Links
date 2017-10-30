@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const redis = require('redis');
+var redis_scanner = require('redis-scanner');
 
 // Create a redis client
 let client = redis.createClient();
@@ -11,10 +12,10 @@ client.on('connect', function(){
 	console.log("Connected to redis");
 });
 
+redis_scanner.bindScanners(client);
+
 const port = 3000;
-
 const app = express();
-
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -56,8 +57,7 @@ app.get('/', function(req, res, next){
 			return console.log(err);
 		}
 		res.render('display', {
-			key1: keys[0],
-			key2: keys[1]
+			key: keys
 		});
 	});
 });
@@ -88,7 +88,7 @@ app.post('/user/add', function(req, res, next){
 	});
 });
 
-// Delte user
+// Delete user
 app.delete('/user/delete/:id', function(req, res, next){
 	client.del(req.params.id);
 	res.redirect('/');
