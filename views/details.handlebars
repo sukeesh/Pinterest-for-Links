@@ -1,0 +1,23 @@
+<h1> Your links [{{user.id}}] </h1>
+<ul class="list-group">
+	<li class="list-group-item">
+		<strong>Link1: </strong>
+		<a href="http://{{user.link1}}">{{user.link1}}</a>
+	</li>
+	<li class="list-group-item">
+		<strong>Link2: </strong>
+		<a href="http://{{user.link2}}">{{user.link2}}</a>
+	</li>
+	<li class="list-group-item">
+		<strong>Link3: </strong>
+		<a href="http://{{user.link3}}">{{user.link3}}</a>
+	</li>
+	<li class="list-group-item">
+		<strong>Link4: </strong>
+		<a href="http://{{user.link4}}">{{user.link4}}</a>
+	</li>
+</ul>
+<a class="btn btn-default pull-left" href="/">Back</a>
+<form method="POST" action="/user/delete/{{user.id}}?_method=DELETE">
+	<input type="submit" class="btn btn-danger pull-right" value="Delete">
+</form>

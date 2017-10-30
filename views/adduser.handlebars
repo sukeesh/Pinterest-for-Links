@@ -1,0 +1,27 @@
+<h1>Create a new board</h1>
+{{#if error}} <span>{{error}}</span> {{/if}}
+
+<form method="POST" action="/user/add">
+	<div class = "form-group">
+		<label>ID</label>
+		<input type="text" class ="form-control" name="id" placeholder="ID" >
+	</div>
+	<div class = "form-group">
+		<label>Link 1</label>
+		<input type="text" class ="form-control" name="link1" placeholder="link" >
+	</div>
+	<div class = "form-group">
+		<label>Link 2</label>
+		<input type="text" class ="form-control" name="link2" placeholder="link" >
+	</div>
+	<div class = "form-group">
+		<label>Link 3</label>
+		<input type="text" class ="form-control" name="link3" placeholder="link" >
+	</div>
+	<div class = "form-group">
+		<label>Link 4</label>
+		<input type="text" class ="form-control" name="link4" placeholder="link" >
+	</div>
+
+	<input type="submit" class="btn btn-primary" value="Save">
+</form>
