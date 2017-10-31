@@ -1,23 +1,38 @@
+<div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Request</strong> successful
+</div>
+
 <h1> Your links [{{user.id}}] </h1>
+
 <ul class="list-group">
 	<li class="list-group-item">
-		<strong>Link1: </strong>
 		<img src="{{thumb1.thumbnail_url}}" width="50" length="50">
+		<p>
+			{{thumb1.description}}
+		</p>
+
 		<a href="http://{{user.link1}}">{{user.link1}}</a>
 	</li>
 	<li class="list-group-item">
-		<strong>Link2: </strong>
 		<img src="{{thumb2.thumbnail_url}}" width="50" length="50">
+		<p>
+			{{thumb2.description}}
+		</p>
 		<a href="http://{{user.link2}}">{{user.link2}}</a>
 	</li>
 	<li class="list-group-item">
-		<strong>Link3: </strong>
 		<img src="{{thumb3.thumbnail_url}}" width="50" length="50">
+		<p>
+			{{thumb3.description}}
+		</p>
 		<a href="http://{{user.link3}}">{{user.link3}}</a>
 	</li>
 	<li class="list-group-item">
-		<strong>Link4: </strong>
 		<img src="{{thumb4.thumbnail_url}}" width="50" length="50">
+		<p>
+			{{thumb4.description}}
+		</p>
 		<a href="http://{{user.link4}}">{{user.link4}}</a>
 	</li>
 </ul>

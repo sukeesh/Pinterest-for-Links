@@ -49,49 +49,42 @@ app.post('/user/search', function(req, res, next){
 			let link3 = "http://api.proc.link/oembed?url=http%3A%2F%2F" + obj.link3;
 			let link4 = "http://api.proc.link/oembed?url=http%3A%2F%2F" + obj.link4;
 			
-			global.thumb1;
-			global.thumb2;
-			global.thumb3;
-			global.thumb4;
+			var thumb_1 = "";
+			var thumb_2 = "";
+			var thumb_3 = "";
+			var thumb_4 = "";
 
 			request(link1, function (error, response, body) {
 			    if (!error && response.statusCode == 200) {
 			      let info = JSON.parse(body);
-			      thumb1 = info;
+			      thumb_1 = info;
 			    }
+			    request(link2, function (error, response, body) {
+				    if (!error && response.statusCode == 200) {
+				      let info = JSON.parse(body);
+				      thumb_2 = info;
+				    }
+				    request(link3, function (error, response, body) {
+					    if (!error && response.statusCode == 200) {
+					      let info = JSON.parse(body);
+					      thumb_3 = info;
+					    }
+					    request(link4, function (error, response, body) {
+						    if (!error && response.statusCode == 200) {
+						      let info = JSON.parse(body);
+						      thumb_4 = info;
+						    }
+						    res.render('details', {
+							user: obj,
+							thumb1: thumb_1,
+							thumb2: thumb_2,
+							thumb3: thumb_3,
+							thumb4: thumb_4
+						});
+						});
+					});
+				});
 			});
-
-			// console.log(global.thumb1);
-
-			request(link2, function (error, response, body) {
-			    if (!error && response.statusCode == 200) {
-			      let info = JSON.parse(body);
-			      thumb2 = info;
-			    }
-			});
-
-			request(link3, function (error, response, body) {
-			    if (!error && response.statusCode == 200) {
-			      let info = JSON.parse(body);
-			      thumb3 = info;
-			    }
-			});
-
-			request(link4, function (error, response, body) {
-			    if (!error && response.statusCode == 200) {
-			      let info = JSON.parse(body);
-			      thumb4 = info;
-			    }
-			});
-
-			res.render('details', {
-				user: obj,
-				thumb1: global.thumb1,
-				thumb2: global.thumb2,
-				thumb3: global.thumb3,
-				thumb4: global.thumb4
-			});
-
 		}
 	});
 });
